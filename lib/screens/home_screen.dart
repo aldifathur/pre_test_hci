@@ -89,10 +89,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget title(HomeModel snapshot) {
     return SliverPersistentHeader(
       delegate: _SliverTitleDelegate(
-          maxHeight: 16.0,
-          minHeight: 16.0,
+          maxHeight: 20.0,
+          minHeight: 20.0,
           child: Padding(
-            padding: const EdgeInsets.only(left: 22.0),
+            padding: const EdgeInsets.only(left: 16.0),
             child: Text(snapshot.data[0].sectionTitle,
                 style: TextStyle(fontSize: 18.0)),
           )),
@@ -104,7 +104,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return SliverPadding(
         padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
         sliver: SliverGrid.count(
-          childAspectRatio: size.height / 390,
+          childAspectRatio:
+              size.height > 700 ? size.height / 530 : size.height / 390,
           crossAxisCount: 1,
           children: List.generate(snapshot.data[0].items.length, (index) {
             return GestureDetector(
@@ -122,7 +123,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Image.network(
                                 snapshot.data[0].items[index].articleImage,
                                 fit: BoxFit.cover,
-                                height: size.height / 4.5,
+                                height: size.height > 700
+                                    ? size.height / 5.5
+                                    : size.height / 4.5,
                                 width: size.width,
                                 filterQuality: FilterQuality.high)),
                         Flexible(
@@ -147,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.cyan[300],
                 borderRadius: BorderRadius.all(const Radius.circular(5.0))),
             width: size.width / 3,
-            height: size.height / 6,
+            height: size.height > 700 ? size.height / 8 : size.height / 6,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
