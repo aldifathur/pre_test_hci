@@ -1,12 +1,11 @@
+import 'bloc.dart';
 import 'package:pre_test_hci/models/home_model.dart';
 import 'package:pre_test_hci/services/repository.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'bloc.dart';
-
 class HomeBloc implements Bloc {
   final _dataHomeController = BehaviorSubject<HomeModel>();
-  
+
   Stream<HomeModel> get dataHome => _dataHomeController.stream;
 
   loadData() async {
